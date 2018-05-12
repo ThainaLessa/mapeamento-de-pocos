@@ -4,4 +4,5 @@ Repositório criado para o projeto desenvolvido durante a disciplina de Introdu�
 
 ## Bibliotecas necessárias:
 <p>Pandas</p>
+<p>numpy</p>
 <p>bokeh</p>
