@@ -12,9 +12,19 @@ def ler_dados_poços(arq_xls):
     xls= pd.ExcelFile('dados.xls')
     sheets = xls.sheet_names
     dic_df_dados = pd.read_excel(xls,sheet_name=None, header=1)
-   
-    #Completar --> Victor
-   
+    
+    dados_poços = {}
+    
+    parametros = ['STD','Cloreto','Sulfato','Cor','Turb','E. Coli','Coliformes totais','Nitrato','Nitrito','pH']
+    
+    for i,poço in enumerate(dic_df_dados['STD']['Pontos']):
+        
+        dados_poços[poço] = {}
+        
+        for num_param in parametros:
+            
+            dados_poços[poço][num_param] = dic_df_dados[num_param].loc[i,'Jan/Fev':'Fev']
+    
     return dados_poços
 #Coordenadas geográficas
 #Transformar grau, minuto e segundo em grau decimal:
