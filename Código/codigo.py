@@ -1,5 +1,7 @@
 import pandas as pd 
 import numpy as np
+import plotly
+import plotly.graph_objs as go
 
 '''
 Manipulação dos dados primários
@@ -23,7 +25,7 @@ def ler_dados_poços():
         
         for num_param in parametros:
             
-            dados_poços[poço][num_param] = dic_df_dados[num_param].loc[i,'Jan/Fev':'Fev']
+            dados_poços[poço][num_param] = dic_df_dados[num_param].loc[i,'Janeiro':'Fevereiro']
 
     return dados_poços
 
@@ -106,9 +108,49 @@ def classif_agua(stats, dados_poços):
                         break               
     return(classes_poços)
 
+#Quantidade de parâmetros que superam o VMPr+ por mês
+def supera_mais_r(classes_poços,dados_poços, v_mais):
+    poços = [poço for poço in list(classes_poços.keys()) if classes_poços[poço] != 'Classe 1']
+    supera = {}
+    for poço in poços:
+        supera[poço] = {}
+        for mês in list(dados_poços['P1']['pH'].keys()):
+            supera[poço][mês] = 0
+            for param in list(dados_poços[poço].keys()):
+                if dados_poços[poço][param][mês] > v_mais[param]:
+                    supera[poço][mês] += 1
+    return(supera)
+
+#Gráfico polar com a quantidade de parâmetros que superam o VMPr+
+def grafico_polar(supera, poço):
+    mes_ano = []
+    for mês in list(supera[poço].keys()):
+        if mês == 'Fevereiro':
+            mes_ano.append('Fevereiro/2010')
+        else:
+            mes_ano.append('{}/2009'.format(mês))
+    data = [
+        go.Scatterpolar(
+            r = list(supera[poço].values()),
+            theta = mes_ano,
+            text = poço,
+            mode = 'markers',
+            marker = dict(
+                color = '#00BFFF',
+                size = 8
+            )
+        )
+    ]
+    layout = go.Layout(showlegend = False)
+    fig = go.Figure(data=data, layout=layout)
+    plotly.offline.plot(fig, filename = '{}.html'.format(poço))
+
 dados_poços = ler_dados_poços()
 stats = calc_stats(dados_poços)
 classif_agua(stats, dados_poços)
+supera = supera_mais_r(classes,dados_poços, v_mais)
+for poço in list(supera.keys()):
+    grafico_polar(supera, poço)
 '''
 Mapa --> Victor
 '''
