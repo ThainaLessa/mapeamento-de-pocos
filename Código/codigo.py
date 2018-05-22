@@ -145,12 +145,42 @@ def grafico_polar(supera, poço):
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig, filename = '{}.html'.format(poço))
 
+def map_whells(df_coordenadas,classes,dados_poços):
+    
+    #print(list(df_coordenadas['Poço']))
+    m=folium.Map(location=[df_coordenadas['Latitude'][0] ,df_coordenadas['Longitude'][0]],zoom_start=13)
+    #list(df_coordenadas['Poço'])
+    labels = df_coordenadas['Poço'].values.tolist()
+    for i,poço in enumerate(labels):
+     #for i in range(len(df_coordenadas['Longitude']))
+          #for poço in labels:
+       #popup=folium.Popup(labels[i], parse_html=True)
+       html_info = """
+       <h5> <b>Dados do poço</b></h5>
+       <p> <big><b>Nome: </b>{}<\p>
+       <p> <b>Classe: </b> {} km<sup>2<\sup> <\p>
+       <p> <b>Latitude: </b>{} <sup>o<\sup><\p>
+       <p> <b>Longitude: </b> {} <sup>o<\sup><\p>
+       <a href="{}", target = blank > Data View </a>
+       </big>
+       """.format(
+       labels[i],
+       classes[poço], 
+       df_coordenadas['Latitude'][i],
+       df_coordenadas['Longitude'][i]
+       )
+       folium.Marker([df_coordenadas['Latitude'][i],df_coordenadas['Longitude'][i]],
+                      popup=html_info
+                      ).add_to(m)
+    
+    m.save('index.html')
+
+
 dados_poços = ler_dados_poços()
 stats = calc_stats(dados_poços)
-classif_agua(stats, dados_poços)
+df_coordenadas=manipular_coordenadas()
+classes=classif_agua(stats, dados_poços)
+map_whells(df_coordenadas,classes,dados_poços)
 supera = supera_mais_r(classes,dados_poços, v_mais)
 for poço in list(supera.keys()):
     grafico_polar(supera, poço)
-'''
-Mapa --> Victor
-'''
