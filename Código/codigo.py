@@ -2,7 +2,9 @@ import pandas as pd
 import numpy as np
 import plotly
 import plotly.graph_objs as go
+import plotly.tools as tls
 import folium
+import matplotlib.pyplot as plt
 
 '''
 Manipulação dos dados primários
@@ -107,7 +109,6 @@ def classif_agua(stats, dados_poços):
                     else:
                         classes_poços[poço] = 'Classe 2'
                         break 
-    print(classes_poços)      
     return(classes_poços, VMPr_mais)
 
 #Quantidade de parâmetros que superam o VMPr+ por mês
@@ -117,10 +118,11 @@ def supera_mais_r(classes_poços,dados_poços, v_mais):
     for poço in poços:
         supera[poço] = {}
         for mês in list(dados_poços['P1']['pH'].keys()):
-            supera[poço][mês] = 0
+            supera[poço][mês] = {'Quantidade':0, 'Parâmetros':[]}
             for param in list(dados_poços[poço].keys()):
                 if dados_poços[poço][param][mês] > v_mais[param]:
-                    supera[poço][mês] += 1
+                    supera[poço][mês]['Quantidade'] += 1
+                    supera[poço][mês]['Parâmetros'].append(param)
     return(supera)
 
 #Gráfico polar com a quantidade de parâmetros que superam o VMPr+
@@ -131,11 +133,18 @@ def grafico_polar(supera, poço):
             mes_ano.append('Fevereiro/2010')
         else:
             mes_ano.append('{}/2009'.format(mês))
+    quant = []
+    for mês in list(supera[poço]):
+        quant.append(list(supera[poço][mês].values())[0])
+    params = []
+    for mês in list(supera[poço]):
+        params.append('Parâmetros: {}'.format(', '.join(list(supera[poço][mês].values())[1])))
     data = [
         go.Scatterpolar(
-            r = list(supera[poço].values()),
+            #r = list(supera[poço].values()),
+            r = quant,
             theta = mes_ano,
-            text = poço,
+            text = params,
             mode = 'markers',
             marker = dict(
                 color = '#00BFFF',
@@ -150,7 +159,7 @@ def grafico_polar(supera, poço):
 def map_whells(df_coordenadas,classes,dados_poços):
     
     #print(list(df_coordenadas['Poço']))
-    m=folium.Map(location=[df_coordenadas['Latitude'][0] ,df_coordenadas['Longitude'][0]],zoom_start=13)
+    m=folium.Map(location=[df_coordenadas['Latitude'][0] ,df_coordenadas['Longitude'][0]],zoom_start=12)
     #list(df_coordenadas['Poço'])
     labels = df_coordenadas['Poço'].values.tolist()
     #for i,poço in enumerate(labels):
@@ -174,6 +183,15 @@ def map_whells(df_coordenadas,classes,dados_poços):
                           ).add_to(m)
     
     m.save('index.html')
+
+
+def gerar_boxplot(dados):
+    mpl_fig = plt.figure()
+    ax = mpl_fig.add_subplot(111)
+    ax.boxplot(dados)
+    ax.set_xlabel('pH')
+    plotly_fig = tls.mpl_to_plotly( mpl_fig )
+    plotly.offline.plot(plotly_fig, filename='boxplot-basic.html')
 
 
 dados_poços = ler_dados_poços()
