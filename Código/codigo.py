@@ -27,7 +27,7 @@ def ler_dados_poços():
         for num_param in parametros:
             
             dados_poços[poço][num_param] = dic_df_dados[num_param].loc[i,'Janeiro':'Fevereiro']
-
+    
     return dados_poços
 
 #Coordenadas geográficas
@@ -107,7 +107,7 @@ def classif_agua(stats, dados_poços):
                     else:
                         classes_poços[poço] = 'Classe 2'
                         break               
-    return(classes_poços)
+    return(classes_poços, VMPr_mais)
 
 #Quantidade de parâmetros que superam o VMPr+ por mês
 def supera_mais_r(classes_poços,dados_poços, v_mais):
@@ -180,7 +180,7 @@ def map_whells(df_coordenadas,classes,dados_poços):
 dados_poços = ler_dados_poços()
 stats = calc_stats(dados_poços)
 df_coordenadas=manipular_coordenadas()
-classes=classif_agua(stats, dados_poços)
+classes, v_mais = classif_agua(stats, dados_poços)
 map_whells(df_coordenadas,classes,dados_poços)
 supera = supera_mais_r(classes,dados_poços, v_mais)
 for poço in list(supera.keys()):
