@@ -94,11 +94,11 @@ def classif_agua(stats, dados_poços):
     for poço in list(df_poços.columns): 
         if stats[poço]['Coliformes totais']['3º quartil'] > df_vrq['Coliformes totais'][poço] or (stats[poço]['Nitrato']['3º quartil'] > df_vrq['Nitrato'][poço] and stats[poço]['Nitrato']['3º quartil'] > 10):
             for param in list(df_poços[poço].index):
-                if df_vrq[param][poço] > VMPr_menos[param] and stats[poço][param]['3º quartil'] <= df_vrq[param][poço]:
+                if df_vrq[param][poço] < VMPr_mais[param] and stats[poço][param]['3º quartil'] <= df_vrq[param][poço]:
+                    classes_poços[poço] = 'Classe 3'
+                elif df_vrq[param][poço] < VMPr_menos[param] and stats[poço][param]['3º quartil'] <= df_vrq[param][poço]:
                     classes_poços[poço] = 'Classe 4'
                     break
-                elif df_vrq[param][poço] > VMPr_mais[param] and stats[poço][param]['3º quartil'] <= df_vrq[param][poço]:
-                    classes_poços[poço] = 'Classe 3'
         else:
             for param in list(df_poços[poço].index):
                 if  stats[poço][param]['3º quartil'] <= VMPr_mais[param]:
@@ -106,7 +106,8 @@ def classif_agua(stats, dados_poços):
                         classes_poços[poço] = 'Classe 1'
                     else:
                         classes_poços[poço] = 'Classe 2'
-                        break               
+                        break 
+    print(classes_poços)      
     return(classes_poços, VMPr_mais)
 
 #Quantidade de parâmetros que superam o VMPr+ por mês
