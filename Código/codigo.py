@@ -136,21 +136,33 @@ def supera_mais_r(classes_poços,dados_poços, v_mais):
 
 #Gráfico polar com a quantidade de parâmetros que superam o VMPr+
 def grafico_polar(supera, poço):
+    '''
+    Esta função cria um gráfico polar que informa a quantidade de parâmetros monitorados 
+    que superaram o valor de referência para consumo humano, por mês, do poço.
+    '''
+    meses = [mês for mês in list(supera[poço].keys()) if mês != 'Superaram']
+
+    #Renomear nome do mês para ter também o ano de monitoramento:
     mes_ano = []
-    for mês in list(supera[poço].keys()):
+    for mês in meses:
         if mês == 'Fevereiro':
             mes_ano.append('Fevereiro/2010')
         else:
             mes_ano.append('{}/2009'.format(mês))
+
+    #Salvar quantidade de parâmetros fora dos padrões, por mês, em uma lista:
     quant = []
-    for mês in list(supera[poço]):
-        quant.append(list(supera[poço][mês].values())[0])
+    for mês in meses:
+        quant.append(supera[poço][mês]['Quantidade'])
+
+    #Salvar nomes dos parâmetros fora dos padrões, por mês, em uma lista:
     params = []
-    for mês in list(supera[poço]):
+    for mês in meses:
         params.append('Parâmetros: {}'.format(', '.join(list(supera[poço][mês].values())[1])))
+    
+    #Gráfico polar:
     data = [
         go.Scatterpolar(
-            #r = list(supera[poço].values()),
             r = quant,
             theta = mes_ano,
             text = params,
@@ -161,9 +173,10 @@ def grafico_polar(supera, poço):
             )
         )
     ]
-    layout = go.Layout(showlegend = False)
+    layout = go.Layout(showlegend = False, 
+        title = 'Poço {} - Quantidade de parâmetros de qualidade da água que superaram o valor de referência para consumo humano'.format(poço))
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename = '{}.html'.format(poço))
+    plotly.offline.plot(fig, filename = 'polar_{}.html'.format(poço))
 
 def map_whells(df_coordenadas,classes,dados_poços):
     
