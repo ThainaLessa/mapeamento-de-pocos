@@ -51,11 +51,12 @@ def manipular_coordenadas():
 '''
 Cálculos e análises
 '''
-#Cálculo das estatísticas: mínimo, máximo, média, mediana e 3º quartil:
+#Cálculo das estatísticas do valor do 3º quartil para cada conjunto de dados
 def calc_stats(dados_poços):
     df = pd.DataFrame(dados_poços, columns=list(dados_poços.keys()))
-    stats = {}
 
+    stats = {}
+    
     for poço in list(df.columns):
         stats[poço] = {}
         for param in list(df[poço].index):
@@ -63,11 +64,7 @@ def calc_stats(dados_poços):
             #Trocar valor não numérico (string no nosso caso) por NaN para poder realizar os cálculos posteriormente:
             df[poço][param] = pd.to_numeric(df[poço][param], errors='coerce')
             
-            #Cálculo das estatísticas:
-            stats[poço][param]['Máximo'] = df[poço][param].drop(df[poço][param].index[0]).max()
-            stats[poço][param]['Mínimo'] = df[poço][param].drop(df[poço][param].index[0]).min()
-            stats[poço][param]['Média'] = df[poço][param].drop(df[poço][param].index[0]).mean()
-            stats[poço][param]['Mediana'] = df[poço][param].drop(df[poço][param].index[0]).median()
+            #Cálculo do valor do 3º quartil:
             stats[poço][param]['3º quartil'] = df[poço][param].drop(df[poço][param].index[0]).sort_values().quantile(q=0.75, interpolation='midpoint')
     return stats
 
