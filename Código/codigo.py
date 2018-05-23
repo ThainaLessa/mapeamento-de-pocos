@@ -6,10 +6,6 @@ import plotly.tools as tls
 import folium
 import matplotlib.pyplot as plt
 
-'''
-Manipulação dos dados primários
-'''
-#Dados de qualidade dos poços monitorados
 def ler_dados_poços():
     '''
     Leitura dos dados de qualidade por parâmero e organização da informação de cada poço em um dicionário
@@ -28,12 +24,17 @@ def ler_dados_poços():
             dados_poços[poço][param] = dic_df_dados[param].loc[i,'Janeiro':'Fevereiro']
     return dados_poços
 
-#Coordenadas geográficas
-#Transformar grau, minuto e segundo em grau decimal:
 def dms_to_dd(d, m, s):
+    '''
+    Transformação de grau, minuto e segundo em grau decimal
+    '''
     dd = d + float(m)/60 + float(s)/3600
     return dd
 def manipular_coordenadas():
+    '''
+    Leitura e mudança do formato das coordenadas geográficas de grau, minuto e segundo para grau
+    decimal
+    '''
     df = pd.read_excel('coordenadas.xlsx', 0, header=0, index_col=0)
 
     for i in range(len(df['Longitude'])):
@@ -48,11 +49,8 @@ def manipular_coordenadas():
         df['Longitude'][i] = dms_to_dd(int(g_lon),int(m_lon),float(s_lon))*(-1)
     return(df)
 
-'''
-Cálculos e análises
-'''
-#Cálculo das estatísticas do valor do 3º quartil para cada conjunto de dados
 def calc_stats(dados_poços):
+    '''Cálculo do valor do 3º quartil para cada conjunto de dados'''
     df = pd.DataFrame(dados_poços, columns=list(dados_poços.keys()))
 
     stats = {}
@@ -68,8 +66,11 @@ def calc_stats(dados_poços):
             stats[poço][param]['3º quartil'] = df[poço][param].drop(df[poço][param].index[0]).sort_values().quantile(q=0.75, interpolation='midpoint')
     return stats
 
-#Classificar a água dos poços conforme CONAMA 396/2008 e Portaria do MS 518/2004:
 def classif_agua(stats, dados_poços):
+    '''
+    Esta função faz a classificação da água dos poços conforme CONAMA 396/2008 e 
+    Portaria do MS 518/2004.
+    '''
     df_poços = pd.DataFrame(dados_poços, columns=list(dados_poços.keys()))
     df_padrões = pd.read_excel('padrões de qualidade.xlsx',0,header=1,index_col=0)
     df_vrq = pd.read_excel('VRQ - poços.xlsx',0,header=1, index_col=0)
@@ -106,7 +107,6 @@ def classif_agua(stats, dados_poços):
                         break 
     return(classes_poços, VMPr_mais)
 
-#Quantidade de parâmetros que superam o VMPr+
 def supera_mais_r(classes_poços,dados_poços, v_mais):
     '''
     Esta função analisa quais e quantos parâmetros monitorados de cada poço superaram o valor de 
@@ -134,11 +134,10 @@ def supera_mais_r(classes_poços,dados_poços, v_mais):
             del supera[poço]
     return(supera)
 
-#Gráfico polar com a quantidade de parâmetros que superam o VMPr+
 def grafico_polar(supera, poço):
     '''
     Esta função cria um gráfico polar que informa a quantidade de parâmetros monitorados 
-    que superaram o valor de referência para consumo humano, por mês, do poço.
+    que superaram o valor de referência para consumo humano (VMPr+), por mês, do poço.
     '''
     meses = [mês for mês in list(supera[poço].keys()) if mês != 'Superaram']
 
@@ -188,7 +187,7 @@ def map_whells(df_coordenadas,classes,dados_poços,supera):
     for poço in classes.keys():
         #Informações a serem apresentadas ao clicar nos poços em um pop-up:    
         html_info = """
-        <h5> <b>Dados do Posto</b></h5>
+        <h5> <b>Dados do Poço</b></h5>
         <p><big><b> Nome: </b>{}</big><\p>
         <p><big><b> Classe: </b>{}</big><\p>
         <p><big><b> Latitude: </b>{}</big><\p>
@@ -247,12 +246,19 @@ def graficos_temp(dados_poços, supera, poço):
         fig = go.Figure(data=dados,layout=layout)
         plotly.offline.plot(fig, filename='temporal_{}_{}.html'.format(param,poço), auto_open=False)
 
+if __name__ == "__main__":
+    #Leitura e tratamento dos dados:
+    dados_poços = ler_dados_poços()
+    stats = calc_stats(dados_poços)
+    df_coordenadas = manipular_coordenadas()
 
-dados_poços = ler_dados_poços()
-stats = calc_stats(dados_poços)
-df_coordenadas=manipular_coordenadas()
-classes, v_mais = classif_agua(stats, dados_poços)
-map_whells(df_coordenadas,classes,dados_poços)
-supera = supera_mais_r(classes,dados_poços, v_mais)
-for poço in list(supera.keys()):
-    grafico_polar(supera, poço)
+    #Classificação das águas dos poços e verificação de parâmetros fora dos padrões:
+    classes, v_mais = classif_agua(stats, dados_poços)
+    supera = supera_mais_r(classes, dados_poços, v_mais)
+
+    #Gerar gráficos e mapa:
+    for poço in list(supera.keys()):
+        grafico_polar(supera, poço)
+        boxplots(dados_poços, supera, poço)
+        graficos_temp(dados_poços, supera, poço)
+    map_whells(df_coordenadas, classes, dados_poços, supera)
