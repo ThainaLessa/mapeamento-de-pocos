@@ -216,13 +216,36 @@ def map_whells(df_coordenadas,classes,dados_poços,supera):
     
     mapa.save('index.html')
 
-def gerar_boxplot(dados):
-    mpl_fig = plt.figure()
-    ax = mpl_fig.add_subplot(111)
-    ax.boxplot(dados)
-    ax.set_xlabel('pH')
-    plotly_fig = tls.mpl_to_plotly( mpl_fig )
-    plotly.offline.plot(plotly_fig, filename='boxplot-basic.html')
+def boxplots(dados_poços, supera, poço):
+    '''
+    Esta função gera um gráfico boxplot para cada conjunto de parâmetros do poço que ficou fora 
+    dos padrões.
+    '''
+    for param in supera[poço]['Superaram']:
+        dados = [go.Box(
+            y=list(dados_poços[poço][param]),
+            name = param
+            )]
+        fig = go.Figure(data=dados)
+        plotly.offline.plot(fig, filename='boxplot_{}_{}.html'.format(param,poço))
+        
+def graficos_temp(dados_poços, supera, poço):
+    '''
+    Esta função gera um gráfico para cada conjunto de parâmetros do poço, no tempo, 
+    que ficou fora dos padrões.
+    '''
+    for param in supera[poço]['Superaram']:
+        dados = [go.Scatter(
+            x = list(dados_poços[poço][param].keys()),
+            y = list(dados_poços[poço][param]),
+            mode = 'markers',
+            marker = dict(
+                color = '#00BFFF',
+                size = 10))]
+        layout = go.Layout(showlegend = False, 
+        title = 'Poço {} - {}: Dados de monitoramento de janeiro de 2009 a fevereiro de 2010'.format(poço,param))
+        fig = go.Figure(data=dados,layout=layout)
+        plotly.offline.plot(fig, filename='temporal_{}_{}.html'.format(param,poço))
 
 
 dados_poços = ler_dados_poços()
