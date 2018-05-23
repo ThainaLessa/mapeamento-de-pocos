@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <style> #map_55dc52843a5e4388ad9f6ddd7f3e38ba {
+                position : relative;
+                width : 100.0%;
+                height: 100.0%;
+                left: 0.0%;
+                top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>    
+    
+            <div class="folium-map" id="map_55dc52843a5e4388ad9f6ddd7f3e38ba" ></div>
+        
+</body>
+<script>    
+    
+
+            
+                var bounds = null;
+            
+
+            var map_55dc52843a5e4388ad9f6ddd7f3e38ba = L.map(
+                                  'map_55dc52843a5e4388ad9f6ddd7f3e38ba',
+                                  {center: [-9.606972222222222,-35.73972222222222],
+                                  zoom: 12,
+                                  maxBounds: bounds,
+                                  layers: [],
+                                  worldCopyJump: false,
+                                  crs: L.CRS.EPSG3857
+                                 });
+            
+        
+    
+            var tile_layer_0da8f0beed6541b2bcbc6846b9e05f5d = L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+  "attribution": null,
+  "detectRetina": false,
+  "maxZoom": 18,
+  "minZoom": 1,
+  "noWrap": false,
+  "subdomains": "abc"
+}
+                ).addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+        
+    
+
+            var marker_5cadba31137c418eb01aaa0ab7469ad2 = L.marker(
+                [-9.6695,-35.71877777777778],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_917a7a16057646a58d3ac2c8b4a1cf12 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'gray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_5cadba31137c418eb01aaa0ab7469ad2.setIcon(icon_917a7a16057646a58d3ac2c8b4a1cf12);
+            
+    
+            var popup_0f49dc34863c4a27a22fd9dea7e215e4 = L.popup({maxWidth: '300'});
+
+            
+                var html_b7348656385249a8acc695c6cc0ed207 = $('<div id="html_b7348656385249a8acc695c6cc0ed207" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P1</big><\p>         <p><big><b> Classe: </b>Classe 4</big><\p>         <p><big><b> Latitude: </b>-9.6695</big><\p>         <p><big><b> Longitude: </b>-35.71877777777778</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P1.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Coliformes totais_P1.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P1.html", target = blank > Nitrato </a><a href="boxplot_Turbidez_P1.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P1.html", target = blank > E. Coli </a><a href="boxplot_Cor_P1.html", target = blank > Cor </a><p>Dados de monitoramento:</p><a href="temporal_Coliformes totais_P1.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P1.html", target = blank > Nitrato </a><a href="temporal_Turbidez_P1.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P1.html", target = blank > E. Coli </a><a href="temporal_Cor_P1.html", target = blank > Cor </a></div>')[0];
+                popup_0f49dc34863c4a27a22fd9dea7e215e4.setContent(html_b7348656385249a8acc695c6cc0ed207);
+            
+
+            marker_5cadba31137c418eb01aaa0ab7469ad2.bindPopup(popup_0f49dc34863c4a27a22fd9dea7e215e4);
+
+            
+        
+    
+
+            var marker_36a1c675f193413eac253a21cc74ea26 = L.marker(
+                [-9.668916666666666,-35.71977777777778],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_09205aa9375241558ac505129e9846e9 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'gray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_36a1c675f193413eac253a21cc74ea26.setIcon(icon_09205aa9375241558ac505129e9846e9);
+            
+    
+            var popup_aa05856b1d534897ae683a9a1f3d3f8b = L.popup({maxWidth: '300'});
+
+            
+                var html_dc2e50c5b6b3463192a1fc0f021187c9 = $('<div id="html_dc2e50c5b6b3463192a1fc0f021187c9" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P2</big><\p>         <p><big><b> Classe: </b>Classe 4</big><\p>         <p><big><b> Latitude: </b>-9.668916666666666</big><\p>         <p><big><b> Longitude: </b>-35.71977777777778</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P2.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P2.html", target = blank > Turbidez </a><a href="boxplot_Coliformes totais_P2.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P2.html", target = blank > Nitrato </a><a href="boxplot_Cor_P2.html", target = blank > Cor </a><a href="boxplot_E. Coli_P2.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P2.html", target = blank > Turbidez </a><a href="temporal_Coliformes totais_P2.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P2.html", target = blank > Nitrato </a><a href="temporal_Cor_P2.html", target = blank > Cor </a><a href="temporal_E. Coli_P2.html", target = blank > E. Coli </a></div>')[0];
+                popup_aa05856b1d534897ae683a9a1f3d3f8b.setContent(html_dc2e50c5b6b3463192a1fc0f021187c9);
+            
+
+            marker_36a1c675f193413eac253a21cc74ea26.bindPopup(popup_aa05856b1d534897ae683a9a1f3d3f8b);
+
+            
+        
+    
+
+            var marker_ceff874ad64c4696a941ce933c1c3591 = L.marker(
+                [-9.670499999999999,-35.745694444444446],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_87e97cbf8eb04a66b02743d0c7463d86 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_ceff874ad64c4696a941ce933c1c3591.setIcon(icon_87e97cbf8eb04a66b02743d0c7463d86);
+            
+    
+            var popup_2c46b4a70bd1471d82edd04cdd4eeb4c = L.popup({maxWidth: '300'});
+
+            
+                var html_fa5ed93d939c49bbb2522cf816c50a62 = $('<div id="html_fa5ed93d939c49bbb2522cf816c50a62" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P3</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.670499999999999</big><\p>         <p><big><b> Longitude: </b>-35.745694444444446</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P3.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Cor_P3.html", target = blank > Cor </a><a href="boxplot_Turbidez_P3.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P3.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P3.html", target = blank > Coliformes totais </a><a href="boxplot_Cloreto_P3.html", target = blank > Cloreto </a><a href="boxplot_Nitrato_P3.html", target = blank > Nitrato </a><p>Dados de monitoramento:</p><a href="temporal_Cor_P3.html", target = blank > Cor </a><a href="temporal_Turbidez_P3.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P3.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P3.html", target = blank > Coliformes totais </a><a href="temporal_Cloreto_P3.html", target = blank > Cloreto </a><a href="temporal_Nitrato_P3.html", target = blank > Nitrato </a></div>')[0];
+                popup_2c46b4a70bd1471d82edd04cdd4eeb4c.setContent(html_fa5ed93d939c49bbb2522cf816c50a62);
+            
+
+            marker_ceff874ad64c4696a941ce933c1c3591.bindPopup(popup_2c46b4a70bd1471d82edd04cdd4eeb4c);
+
+            
+        
+    
+
+            var marker_59a10d79d29d4b1b94757dbf5c0499dc = L.marker(
+                [-9.672397222222221,-35.75447222222222],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_47e011d43a66434597b9e54103a5897f = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'gray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_59a10d79d29d4b1b94757dbf5c0499dc.setIcon(icon_47e011d43a66434597b9e54103a5897f);
+            
+    
+            var popup_29b1cad2fe334663b64afdbfdfd8d1d9 = L.popup({maxWidth: '300'});
+
+            
+                var html_4d4c03069860485bb07af36041302053 = $('<div id="html_4d4c03069860485bb07af36041302053" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P4</big><\p>         <p><big><b> Classe: </b>Classe 4</big><\p>         <p><big><b> Latitude: </b>-9.672397222222221</big><\p>         <p><big><b> Longitude: </b>-35.75447222222222</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P4.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Cor_P4.html", target = blank > Cor </a><a href="boxplot_Turbidez_P4.html", target = blank > Turbidez </a><a href="boxplot_Coliformes totais_P4.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P4.html", target = blank > Nitrato </a><a href="boxplot_E. Coli_P4.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Cor_P4.html", target = blank > Cor </a><a href="temporal_Turbidez_P4.html", target = blank > Turbidez </a><a href="temporal_Coliformes totais_P4.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P4.html", target = blank > Nitrato </a><a href="temporal_E. Coli_P4.html", target = blank > E. Coli </a></div>')[0];
+                popup_29b1cad2fe334663b64afdbfdfd8d1d9.setContent(html_4d4c03069860485bb07af36041302053);
+            
+
+            marker_59a10d79d29d4b1b94757dbf5c0499dc.bindPopup(popup_29b1cad2fe334663b64afdbfdfd8d1d9);
+
+            
+        
+    
+
+            var marker_a0768de4451c4b6f9dad14f872759db8 = L.marker(
+                [-9.671666666666667,-35.75302777777778],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_bb9e83bf2dc747b5a27e665b5a78b16f = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'gray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_a0768de4451c4b6f9dad14f872759db8.setIcon(icon_bb9e83bf2dc747b5a27e665b5a78b16f);
+            
+    
+            var popup_b6b89d0fa75745c4be9491cc656838bb = L.popup({maxWidth: '300'});
+
+            
+                var html_f83a6c440df844b9aab4c4a47841f6b9 = $('<div id="html_f83a6c440df844b9aab4c4a47841f6b9" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P5</big><\p>         <p><big><b> Classe: </b>Classe 4</big><\p>         <p><big><b> Latitude: </b>-9.671666666666667</big><\p>         <p><big><b> Longitude: </b>-35.75302777777778</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P5.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Cor_P5.html", target = blank > Cor </a><a href="boxplot_Turbidez_P5.html", target = blank > Turbidez </a><a href="boxplot_Coliformes totais_P5.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P5.html", target = blank > Nitrato </a><a href="boxplot_E. Coli_P5.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Cor_P5.html", target = blank > Cor </a><a href="temporal_Turbidez_P5.html", target = blank > Turbidez </a><a href="temporal_Coliformes totais_P5.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P5.html", target = blank > Nitrato </a><a href="temporal_E. Coli_P5.html", target = blank > E. Coli </a></div>')[0];
+                popup_b6b89d0fa75745c4be9491cc656838bb.setContent(html_f83a6c440df844b9aab4c4a47841f6b9);
+            
+
+            marker_a0768de4451c4b6f9dad14f872759db8.bindPopup(popup_b6b89d0fa75745c4be9491cc656838bb);
+
+            
+        
+    
+
+            var marker_3216e3dc89194fa2b59723f5afb27298 = L.marker(
+                [-9.606972222222222,-35.73972222222222],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_d7f8f9a4271b44818354065a88db5e85 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_3216e3dc89194fa2b59723f5afb27298.setIcon(icon_d7f8f9a4271b44818354065a88db5e85);
+            
+    
+            var popup_8989860e142e4fd0ab61b74c0a3546da = L.popup({maxWidth: '300'});
+
+            
+                var html_ca6e38c9c95742858851b28b479a3102 = $('<div id="html_ca6e38c9c95742858851b28b479a3102" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P6</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.606972222222222</big><\p>         <p><big><b> Longitude: </b>-35.73972222222222</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P6.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Nitrato_P6.html", target = blank > Nitrato </a><a href="boxplot_E. Coli_P6.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P6.html", target = blank > Coliformes totais </a><a href="boxplot_Turbidez_P6.html", target = blank > Turbidez </a><p>Dados de monitoramento:</p><a href="temporal_Nitrato_P6.html", target = blank > Nitrato </a><a href="temporal_E. Coli_P6.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P6.html", target = blank > Coliformes totais </a><a href="temporal_Turbidez_P6.html", target = blank > Turbidez </a></div>')[0];
+                popup_8989860e142e4fd0ab61b74c0a3546da.setContent(html_ca6e38c9c95742858851b28b479a3102);
+            
+
+            marker_3216e3dc89194fa2b59723f5afb27298.bindPopup(popup_8989860e142e4fd0ab61b74c0a3546da);
+
+            
+        
+    
+
+            var marker_3a8ccaa314a9421296bc78d373e2b559 = L.marker(
+                [-9.592944444444445,-35.73836111111111],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_05b0bfa58e094222a615ef95a8613334 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_3a8ccaa314a9421296bc78d373e2b559.setIcon(icon_05b0bfa58e094222a615ef95a8613334);
+            
+    
+            var popup_14e40e47e15140859160f54453d6fd24 = L.popup({maxWidth: '300'});
+
+            
+                var html_01b63b6cb19c4984918c687cbc1a494d = $('<div id="html_01b63b6cb19c4984918c687cbc1a494d" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P7</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.592944444444445</big><\p>         <p><big><b> Longitude: </b>-35.73836111111111</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P7.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_E. Coli_P7.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P7.html", target = blank > Coliformes totais </a><p>Dados de monitoramento:</p><a href="temporal_E. Coli_P7.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P7.html", target = blank > Coliformes totais </a></div>')[0];
+                popup_14e40e47e15140859160f54453d6fd24.setContent(html_01b63b6cb19c4984918c687cbc1a494d);
+            
+
+            marker_3a8ccaa314a9421296bc78d373e2b559.bindPopup(popup_14e40e47e15140859160f54453d6fd24);
+
+            
+        
+    
+
+            var marker_fa91dea049f6439b8fc29b55c6111453 = L.marker(
+                [-9.642444444444443,-35.73775],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_3acef7f3a2a34106b7c05bfd4e3f56d6 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_fa91dea049f6439b8fc29b55c6111453.setIcon(icon_3acef7f3a2a34106b7c05bfd4e3f56d6);
+            
+    
+            var popup_74fd15e54e9c44e08187cc50bd126255 = L.popup({maxWidth: '300'});
+
+            
+                var html_9ab9514e83a44cc6adf63d5cea9d177a = $('<div id="html_9ab9514e83a44cc6adf63d5cea9d177a" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P8</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.642444444444443</big><\p>         <p><big><b> Longitude: </b>-35.73775</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P8.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Nitrato_P8.html", target = blank > Nitrato </a><a href="boxplot_Coliformes totais_P8.html", target = blank > Coliformes totais </a><a href="boxplot_E. Coli_P8.html", target = blank > E. Coli </a><a href="boxplot_STD_P8.html", target = blank > STD </a><a href="boxplot_Turbidez_P8.html", target = blank > Turbidez </a><p>Dados de monitoramento:</p><a href="temporal_Nitrato_P8.html", target = blank > Nitrato </a><a href="temporal_Coliformes totais_P8.html", target = blank > Coliformes totais </a><a href="temporal_E. Coli_P8.html", target = blank > E. Coli </a><a href="temporal_STD_P8.html", target = blank > STD </a><a href="temporal_Turbidez_P8.html", target = blank > Turbidez </a></div>')[0];
+                popup_74fd15e54e9c44e08187cc50bd126255.setContent(html_9ab9514e83a44cc6adf63d5cea9d177a);
+            
+
+            marker_fa91dea049f6439b8fc29b55c6111453.bindPopup(popup_74fd15e54e9c44e08187cc50bd126255);
+
+            
+        
+    
+
+            var marker_9392cedf29ee4a35baba5f223a480ae9 = L.marker(
+                [-9.617194444444445,-35.69269444444444],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_60685c6d48b44876b6388832d3c3384f = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_9392cedf29ee4a35baba5f223a480ae9.setIcon(icon_60685c6d48b44876b6388832d3c3384f);
+            
+    
+            var popup_77baa9fde305471582dfb8953f41fd26 = L.popup({maxWidth: '300'});
+
+            
+                var html_a9648ddcd4dc4f7ea99a3d21b9893774 = $('<div id="html_a9648ddcd4dc4f7ea99a3d21b9893774" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P9</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.617194444444445</big><\p>         <p><big><b> Longitude: </b>-35.69269444444444</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P9.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Coliformes totais_P9.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P9.html", target = blank > Nitrato </a><a href="boxplot_E. Coli_P9.html", target = blank > E. Coli </a><a href="boxplot_Turbidez_P9.html", target = blank > Turbidez </a><p>Dados de monitoramento:</p><a href="temporal_Coliformes totais_P9.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P9.html", target = blank > Nitrato </a><a href="temporal_E. Coli_P9.html", target = blank > E. Coli </a><a href="temporal_Turbidez_P9.html", target = blank > Turbidez </a></div>')[0];
+                popup_77baa9fde305471582dfb8953f41fd26.setContent(html_a9648ddcd4dc4f7ea99a3d21b9893774);
+            
+
+            marker_9392cedf29ee4a35baba5f223a480ae9.bindPopup(popup_77baa9fde305471582dfb8953f41fd26);
+
+            
+        
+    
+
+            var marker_6562f277e48d4b048c7752d4ee12853a = L.marker(
+                [-9.57775,-35.659444444444446],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_290ed7f4f70644d08697e3e896cf4221 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_6562f277e48d4b048c7752d4ee12853a.setIcon(icon_290ed7f4f70644d08697e3e896cf4221);
+            
+    
+            var popup_7d060ae9602649fc99ae1f5290cdd969 = L.popup({maxWidth: '300'});
+
+            
+                var html_3d2617fafb884718a4893b036db31b47 = $('<div id="html_3d2617fafb884718a4893b036db31b47" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P10</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.57775</big><\p>         <p><big><b> Longitude: </b>-35.659444444444446</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P10.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_E. Coli_P10.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P10.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P10.html", target = blank > Nitrato </a><a href="boxplot_Turbidez_P10.html", target = blank > Turbidez </a><p>Dados de monitoramento:</p><a href="temporal_E. Coli_P10.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P10.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P10.html", target = blank > Nitrato </a><a href="temporal_Turbidez_P10.html", target = blank > Turbidez </a></div>')[0];
+                popup_7d060ae9602649fc99ae1f5290cdd969.setContent(html_3d2617fafb884718a4893b036db31b47);
+            
+
+            marker_6562f277e48d4b048c7752d4ee12853a.bindPopup(popup_7d060ae9602649fc99ae1f5290cdd969);
+
+            
+        
+    
+
+            var marker_23d1b3c1434d4b6db27b228a0dae96e9 = L.marker(
+                [-9.658861111111111,-35.728861111111115],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_05cd982d7dce4d399caf60f5a980af15 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_23d1b3c1434d4b6db27b228a0dae96e9.setIcon(icon_05cd982d7dce4d399caf60f5a980af15);
+            
+    
+            var popup_d3002399339544429bfd33803402d330 = L.popup({maxWidth: '300'});
+
+            
+                var html_e76138068e0644249597ad3e6c3fd9f9 = $('<div id="html_e76138068e0644249597ad3e6c3fd9f9" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P11</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.658861111111111</big><\p>         <p><big><b> Longitude: </b>-35.728861111111115</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P11.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Coliformes totais_P11.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P11.html", target = blank > Nitrato </a><a href="boxplot_Turbidez_P11.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P11.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Coliformes totais_P11.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P11.html", target = blank > Nitrato </a><a href="temporal_Turbidez_P11.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P11.html", target = blank > E. Coli </a></div>')[0];
+                popup_d3002399339544429bfd33803402d330.setContent(html_e76138068e0644249597ad3e6c3fd9f9);
+            
+
+            marker_23d1b3c1434d4b6db27b228a0dae96e9.bindPopup(popup_d3002399339544429bfd33803402d330);
+
+            
+        
+    
+
+            var marker_80314dc0325d4867891f55a303f93f20 = L.marker(
+                [-9.569805555555556,-35.77013888888889],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_0407c34f149b49d4a96fed18352771f7 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_80314dc0325d4867891f55a303f93f20.setIcon(icon_0407c34f149b49d4a96fed18352771f7);
+            
+    
+            var popup_84ebd591f0824e6998358fd2daf8c57e = L.popup({maxWidth: '300'});
+
+            
+                var html_e0039baaa7434354bc15be68261e3346 = $('<div id="html_e0039baaa7434354bc15be68261e3346" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P12</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.569805555555556</big><\p>         <p><big><b> Longitude: </b>-35.77013888888889</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P12.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P12.html", target = blank > Turbidez </a><a href="boxplot_Nitrato_P12.html", target = blank > Nitrato </a><a href="boxplot_Coliformes totais_P12.html", target = blank > Coliformes totais </a><a href="boxplot_E. Coli_P12.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P12.html", target = blank > Turbidez </a><a href="temporal_Nitrato_P12.html", target = blank > Nitrato </a><a href="temporal_Coliformes totais_P12.html", target = blank > Coliformes totais </a><a href="temporal_E. Coli_P12.html", target = blank > E. Coli </a></div>')[0];
+                popup_84ebd591f0824e6998358fd2daf8c57e.setContent(html_e0039baaa7434354bc15be68261e3346);
+            
+
+            marker_80314dc0325d4867891f55a303f93f20.bindPopup(popup_84ebd591f0824e6998358fd2daf8c57e);
+
+            
+        
+    
+
+            var marker_79034ed43fc847ceb2391acde7c30666 = L.marker(
+                [-9.560555555555556,-35.742555555555555],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_cb1bd7ac86dc4bc1bc36c67d5eb1a7e0 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_79034ed43fc847ceb2391acde7c30666.setIcon(icon_cb1bd7ac86dc4bc1bc36c67d5eb1a7e0);
+            
+    
+            var popup_8f39825ba9f74596b3f6b120a66350db = L.popup({maxWidth: '300'});
+
+            
+                var html_66d2967c0035464cb595d10b78a4533d = $('<div id="html_66d2967c0035464cb595d10b78a4533d" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P13</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.560555555555556</big><\p>         <p><big><b> Longitude: </b>-35.742555555555555</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P13.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P13.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P13.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P13.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P13.html", target = blank > Nitrato </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P13.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P13.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P13.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P13.html", target = blank > Nitrato </a></div>')[0];
+                popup_8f39825ba9f74596b3f6b120a66350db.setContent(html_66d2967c0035464cb595d10b78a4533d);
+            
+
+            marker_79034ed43fc847ceb2391acde7c30666.bindPopup(popup_8f39825ba9f74596b3f6b120a66350db);
+
+            
+        
+    
+
+            var marker_e1b0a32c21b3493ea534bbd93d184136 = L.marker(
+                [-9.558722222222222,-35.74327777777778],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_520c37da94e7464e904952adeabf6a26 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_e1b0a32c21b3493ea534bbd93d184136.setIcon(icon_520c37da94e7464e904952adeabf6a26);
+            
+    
+            var popup_75ddd996aef14c9583d2e944145596c1 = L.popup({maxWidth: '300'});
+
+            
+                var html_5f5a184686c64f9587575abfb27f701a = $('<div id="html_5f5a184686c64f9587575abfb27f701a" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P14</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.558722222222222</big><\p>         <p><big><b> Longitude: </b>-35.74327777777778</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P14.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P14.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P14.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P14.html", target = blank > Coliformes totais </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P14.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P14.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P14.html", target = blank > Coliformes totais </a></div>')[0];
+                popup_75ddd996aef14c9583d2e944145596c1.setContent(html_5f5a184686c64f9587575abfb27f701a);
+            
+
+            marker_e1b0a32c21b3493ea534bbd93d184136.bindPopup(popup_75ddd996aef14c9583d2e944145596c1);
+
+            
+        
+    
+
+            var marker_e5476146ef174b2c93368e4670d3bfc3 = L.marker(
+                [-9.547166666666666,-35.72913888888889],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_1e063f588112480f8b8fc81dda6879c7 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_e5476146ef174b2c93368e4670d3bfc3.setIcon(icon_1e063f588112480f8b8fc81dda6879c7);
+            
+    
+            var popup_34e9ea53612d41abb73f1a93a75ecb3a = L.popup({maxWidth: '300'});
+
+            
+                var html_ed0a1915a99348e1bb6770df2157fa54 = $('<div id="html_ed0a1915a99348e1bb6770df2157fa54" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P15</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.547166666666666</big><\p>         <p><big><b> Longitude: </b>-35.72913888888889</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P15.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P15.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P15.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P15.html", target = blank > Coliformes totais </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P15.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P15.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P15.html", target = blank > Coliformes totais </a></div>')[0];
+                popup_34e9ea53612d41abb73f1a93a75ecb3a.setContent(html_ed0a1915a99348e1bb6770df2157fa54);
+            
+
+            marker_e5476146ef174b2c93368e4670d3bfc3.bindPopup(popup_34e9ea53612d41abb73f1a93a75ecb3a);
+
+            
+        
+    
+
+            var marker_d92c12f0dfa04de3992c83dd604054c8 = L.marker(
+                [-9.588305555555555,-35.77813888888889],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_454d18d6a04b4042854273d850fdb6bd = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_d92c12f0dfa04de3992c83dd604054c8.setIcon(icon_454d18d6a04b4042854273d850fdb6bd);
+            
+    
+            var popup_e133d672911d4723be3cda6405016304 = L.popup({maxWidth: '300'});
+
+            
+                var html_2eb1dfe3e49f4ea0b8ea8323c20888f3 = $('<div id="html_2eb1dfe3e49f4ea0b8ea8323c20888f3" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P16</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.588305555555555</big><\p>         <p><big><b> Longitude: </b>-35.77813888888889</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P16.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P16.html", target = blank > Turbidez </a><a href="boxplot_Coliformes totais_P16.html", target = blank > Coliformes totais </a><a href="boxplot_Nitrato_P16.html", target = blank > Nitrato </a><a href="boxplot_Cor_P16.html", target = blank > Cor </a><a href="boxplot_E. Coli_P16.html", target = blank > E. Coli </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P16.html", target = blank > Turbidez </a><a href="temporal_Coliformes totais_P16.html", target = blank > Coliformes totais </a><a href="temporal_Nitrato_P16.html", target = blank > Nitrato </a><a href="temporal_Cor_P16.html", target = blank > Cor </a><a href="temporal_E. Coli_P16.html", target = blank > E. Coli </a></div>')[0];
+                popup_e133d672911d4723be3cda6405016304.setContent(html_2eb1dfe3e49f4ea0b8ea8323c20888f3);
+            
+
+            marker_d92c12f0dfa04de3992c83dd604054c8.bindPopup(popup_e133d672911d4723be3cda6405016304);
+
+            
+        
+    
+
+            var marker_c3925824f9014a35a6a2e89bb1e19d08 = L.marker(
+                [-9.621861111111112,-35.74888888888889],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_65ec66c955964778a4d25dfdc551dd55 = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'lightgray',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_c3925824f9014a35a6a2e89bb1e19d08.setIcon(icon_65ec66c955964778a4d25dfdc551dd55);
+            
+    
+            var popup_225b964829894388b4b5a987ee1c1d84 = L.popup({maxWidth: '300'});
+
+            
+                var html_26daa6fbd2b142a4a09bec1734a05672 = $('<div id="html_26daa6fbd2b142a4a09bec1734a05672" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P17</big><\p>         <p><big><b> Classe: </b>Classe 3</big><\p>         <p><big><b> Latitude: </b>-9.621861111111112</big><\p>         <p><big><b> Longitude: </b>-35.74888888888889</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P17.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P17.html", target = blank > Turbidez </a><a href="boxplot_Nitrato_P17.html", target = blank > Nitrato </a><a href="boxplot_Coliformes totais_P17.html", target = blank > Coliformes totais </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P17.html", target = blank > Turbidez </a><a href="temporal_Nitrato_P17.html", target = blank > Nitrato </a><a href="temporal_Coliformes totais_P17.html", target = blank > Coliformes totais </a></div>')[0];
+                popup_225b964829894388b4b5a987ee1c1d84.setContent(html_26daa6fbd2b142a4a09bec1734a05672);
+            
+
+            marker_c3925824f9014a35a6a2e89bb1e19d08.bindPopup(popup_225b964829894388b4b5a987ee1c1d84);
+
+            
+        
+    
+
+            var marker_24ed58cf351a4e39914096587632ad51 = L.marker(
+                [-9.667813888888888,-35.717486111111114],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_55dc52843a5e4388ad9f6ddd7f3e38ba);
+            
+    
+
+                var icon_ba670e459fac41b5b1c78bea23b77b0e = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'blue',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_24ed58cf351a4e39914096587632ad51.setIcon(icon_ba670e459fac41b5b1c78bea23b77b0e);
+            
+    
+            var popup_5857eeea8d7743aca74067392cf30032 = L.popup({maxWidth: '300'});
+
+            
+                var html_2099b0869ba34c76a88369146918d2cf = $('<div id="html_2099b0869ba34c76a88369146918d2cf" style="width: 100.0%; height: 100.0%;">         <h5> <b>Dados do Poço</b></h5>         <p><big><b> Nome: </b>P18</big><\p>         <p><big><b> Classe: </b>Classe 2</big><\p>         <p><big><b> Latitude: </b>-9.667813888888888</big><\p>         <p><big><b> Longitude: </b>-35.717486111111114</big><\p>         <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>         <p><a href="polar_P18.html", target = blank > Gráfico polar </a></p>         <p>Gráficos boxplot:</p>         <a href="boxplot_Turbidez_P18.html", target = blank > Turbidez </a><a href="boxplot_E. Coli_P18.html", target = blank > E. Coli </a><a href="boxplot_Coliformes totais_P18.html", target = blank > Coliformes totais </a><a href="boxplot_Cor_P18.html", target = blank > Cor </a><a href="boxplot_Nitrato_P18.html", target = blank > Nitrato </a><p>Dados de monitoramento:</p><a href="temporal_Turbidez_P18.html", target = blank > Turbidez </a><a href="temporal_E. Coli_P18.html", target = blank > E. Coli </a><a href="temporal_Coliformes totais_P18.html", target = blank > Coliformes totais </a><a href="temporal_Cor_P18.html", target = blank > Cor </a><a href="temporal_Nitrato_P18.html", target = blank > Nitrato </a></div>')[0];
+                popup_5857eeea8d7743aca74067392cf30032.setContent(html_2099b0869ba34c76a88369146918d2cf);
+            
+
+            marker_24ed58cf351a4e39914096587632ad51.bindPopup(popup_5857eeea8d7743aca74067392cf30032);
+
+            
+        
+</script>
