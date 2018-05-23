@@ -176,7 +176,7 @@ def grafico_polar(supera, poço):
     layout = go.Layout(showlegend = False, 
         title = 'Poço {} - Quantidade de parâmetros de qualidade da água que superaram o valor de referência para consumo humano'.format(poço))
     fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig, filename = 'polar_{}.html'.format(poço))
+    plotly.offline.plot(fig, filename = 'polar_{}.html'.format(poço), auto_open=False)
 
 def map_whells(df_coordenadas,classes,dados_poços,supera):
     '''
@@ -227,7 +227,7 @@ def boxplots(dados_poços, supera, poço):
             name = param
             )]
         fig = go.Figure(data=dados)
-        plotly.offline.plot(fig, filename='boxplot_{}_{}.html'.format(param,poço))
+        plotly.offline.plot(fig, filename='boxplot_{}_{}.html'.format(param,poço), auto_open=False)
         
 def graficos_temp(dados_poços, supera, poço):
     '''
@@ -245,7 +245,7 @@ def graficos_temp(dados_poços, supera, poço):
         layout = go.Layout(showlegend = False, 
         title = 'Poço {} - {}: Dados de monitoramento de janeiro de 2009 a fevereiro de 2010'.format(poço,param))
         fig = go.Figure(data=dados,layout=layout)
-        plotly.offline.plot(fig, filename='temporal_{}_{}.html'.format(param,poço))
+        plotly.offline.plot(fig, filename='temporal_{}_{}.html'.format(param,poço), auto_open=False)
 
 
 dados_poços = ler_dados_poços()
