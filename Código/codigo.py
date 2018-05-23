@@ -20,37 +20,13 @@ def ler_dados_poços():
     
     dados_poços = {}
     
-    parametros = ['STD','Cloreto','Sulfato','Cor','Turb','E. Coli','Coliformes totais','Nitrito','Nitrato','pH']
+    parametros = ['STD','Cloreto','Sulfato','Cor','Turbidez','E. Coli','Coliformes totais','Nitrito','Nitrato','pH']
     
     for i,poço in enumerate(dic_df_dados['STD']['Pontos']):
-        
         dados_poços[poço] = {}
-        
-        for num_param in parametros:
-            
-            dados_poços[poço][num_param] = dic_df_dados[num_param].loc[i,'Janeiro':'Fevereiro']
-    
+        for param in parametros:
+            dados_poços[poço][param] = dic_df_dados[param].loc[i,'Janeiro':'Fevereiro']
     return dados_poços
-
-#Coordenadas geográficas
-#Transformar grau, minuto e segundo em grau decimal:
-def dms_to_dd(d, m, s):
-    dd = d + float(m)/60 + float(s)/3600
-    return dd
-def manipular_coordenadas():
-    df = pd.read_excel('coordenadas.xlsx', 0, header=0)
-
-    for i in range(len(df['Longitude'])):
-        lat = df['Latitude'][i]
-        lon = df['Longitude'][i]
-        #Uniformizando a escrita das coordenadas:
-        g_lat, m_lat, s_lat = lat.replace('°',' ').replace("''",'"').replace("'",' ').replace('"','').split(' ')
-        g_lon, m_lon, s_lon = lon.replace('°',' ').replace("''",'"').replace("'",' ').replace('"','').split(' ')
-
-        #Mudar de coordenadas geográficas grau, minuto, segundo para grau decimal (*(-1) para representar Sul e Oeste):
-        df['Latitude'][i] = dms_to_dd(int(g_lat),int(m_lat),float(s_lat))*(-1)
-        df['Longitude'][i] = dms_to_dd(int(g_lon),int(m_lon),float(s_lon))*(-1)
-    return(df)
 
 '''
 Cálculos e análises
