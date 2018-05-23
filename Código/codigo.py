@@ -178,34 +178,43 @@ def grafico_polar(supera, poço):
     fig = go.Figure(data=data, layout=layout)
     plotly.offline.plot(fig, filename = 'polar_{}.html'.format(poço))
 
-def map_whells(df_coordenadas,classes,dados_poços):
+def map_whells(df_coordenadas,classes,dados_poços,supera):
+    '''
+    Esta função gera o mapa com a localização e informações dos poços monitorados.
+    '''
+    #Criação do mapa passando as coordenadas do poço P6, por ser um poço central, apenas para melhor visualização ao inserir os demais:
+    mapa = folium.Map(location=[df_coordenadas['Latitude']['P6'] ,df_coordenadas['Longitude']['P6']],zoom_start=12)
     
-    #print(list(df_coordenadas['Poço']))
-    m=folium.Map(location=[df_coordenadas['Latitude'][0] ,df_coordenadas['Longitude'][0]],zoom_start=12)
-    #list(df_coordenadas['Poço'])
-    labels = df_coordenadas['Poço'].values.tolist()
-    #for i,poço in enumerate(labels):
-    for i in range(len(df_coordenadas['Longitude'])):
-        for poço in classes.keys():
-       #popup=folium.Popup(labels[i], parse_html=True)
-           html_info = """
-           <h5> <b>Dados do Posto</b></h5>
-           <p> <big><b>Nome: </b>{}</big><\p>
-           <p> </big><b>Classe: </b> {} </big><\p>
-           <p> </big><b>Latitude: </b>{} </big><\p>
-           <p> </big><b>Longitude: </b> {} </big><\p>
-           """.format(
-           labels[i],
-           classes[poço], 
-           df_coordenadas['Latitude'][i],
-           df_coordenadas['Longitude'][i]
-           )
-           folium.Marker([df_coordenadas['Latitude'][i],df_coordenadas['Longitude'][i]],
-                          popup=html_info
-                          ).add_to(m)
+    for poço in classes.keys():
+        #Informações a serem apresentadas ao clicar nos poços em um pop-up:    
+        html_info = """
+        <h5> <b>Dados do Posto</b></h5>
+        <p><big><b> Nome: </b>{}</big><\p>
+        <p><big><b> Classe: </b>{}</big><\p>
+        <p><big><b> Latitude: </b>{}</big><\p>
+        <p><big><b> Longitude: </b>{}</big><\p>
+        <p><b> Parâmetros fora dos padrões para consumo humando: </b></p>
+        <p><a href="{}", target = blank > Gráfico polar </a></p>
+        <p>Gráficos boxplot:</p>
+        """.format(
+        poço,
+        classes[poço], 
+        df_coordenadas['Latitude'][poço],
+        df_coordenadas['Longitude'][poço],
+        'polar_{}.html'.format(poço)
+        )
+        for param in supera[poço]['Superaram']:
+            html_info += '<a href="boxplot_{}_{}.html", target = blank > {} </a>'.format(param,poço,param)
+        html_info += '<p>Dados de monitoramento:</p>'
+        for param in supera[poço]['Superaram']:
+            html_info += '<a href="temporal_{}_{}.html", target = blank > {} </a>'.format(param,poço,param)
+        
+        #Inserir poço no mapa:
+        cores = {'Classe 1':'lightblue','Classe 2':'blue','Classe 3':'lightgray','Classe 4':'gray'}
+        folium.Marker([df_coordenadas['Latitude'][poço],df_coordenadas['Longitude'][poço]],popup=html_info,
+        icon=folium.Icon(color=cores[classes[poço]])).add_to(mapa)
     
-    m.save('index.html')
-
+    mapa.save('index.html')
 
 def gerar_boxplot(dados):
     mpl_fig = plt.figure()
