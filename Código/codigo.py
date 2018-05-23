@@ -56,7 +56,7 @@ def calc_stats(dados_poços):
     df = pd.DataFrame(dados_poços, columns=list(dados_poços.keys()))
 
     stats = {}
-    
+
     for poço in list(df.columns):
         stats[poço] = {}
         for param in list(df[poço].index):
@@ -76,6 +76,7 @@ def classif_agua(stats, dados_poços):
 
     VMPr_mais = {}
     VMPr_menos = {}
+
     for param in list(df_padrões.columns):
         '''
         Encontrar, entre os padrões de qualidade, o valor máximo permitido mais restritivo (VMPr+)
@@ -85,6 +86,7 @@ def classif_agua(stats, dados_poços):
         VMPr_menos[param] = float(df_padrões[param].max())
 
     classes_poços = {}
+
     #Fazer análise do parâmetro para classificar:
     for poço in list(df_poços.columns): 
         if stats[poço]['Coliformes totais']['3º quartil'] > df_vrq['Coliformes totais'][poço] or (stats[poço]['Nitrato']['3º quartil'] > df_vrq['Nitrato'][poço] and stats[poço]['Nitrato']['3º quartil'] > 10):
@@ -104,18 +106,32 @@ def classif_agua(stats, dados_poços):
                         break 
     return(classes_poços, VMPr_mais)
 
-#Quantidade de parâmetros que superam o VMPr+ por mês
+#Quantidade de parâmetros que superam o VMPr+
 def supera_mais_r(classes_poços,dados_poços, v_mais):
+    '''
+    Esta função analisa quais e quantos parâmetros monitorados de cada poço superaram o valor de 
+    referência de qualidade para consumo humano (VMPr+), por mês e em todo o período analisado.
+    '''
     poços = [poço for poço in list(classes_poços.keys()) if classes_poços[poço] != 'Classe 1']
+
     supera = {}
+
     for poço in poços:
         supera[poço] = {}
+        supera[poço]['Superaram'] = []
+        
         for mês in list(dados_poços['P1']['pH'].keys()):
             supera[poço][mês] = {'Quantidade':0, 'Parâmetros':[]}
             for param in list(dados_poços[poço].keys()):
                 if dados_poços[poço][param][mês] > v_mais[param]:
                     supera[poço][mês]['Quantidade'] += 1
                     supera[poço][mês]['Parâmetros'].append(param)
+                    if param not in supera[poço]['Superaram']:
+                        supera[poço]['Superaram'].append(param)
+
+        #Exluir chave (poço) em que nenhum parâmetro ficou fora do padrão:
+        if bool(supera[poço]) == False:
+            del supera[poço]
     return(supera)
 
 #Gráfico polar com a quantidade de parâmetros que superam o VMPr+
