@@ -212,7 +212,7 @@ def map_whells(df_coordenadas,classes,dados_poços,supera):
         folium.Marker([df_coordenadas['Latitude'][poço],df_coordenadas['Longitude'][poço]],popup=html_info,
         icon=folium.Icon(color=cores[classes[poço]])).add_to(mapa)
     
-    mapa.save('index.html')
+    mapa.save('mapa.html')
 
 def boxplots(dados_poços, supera, poço):
     '''
